@@ -14,7 +14,7 @@
  ([uid] (: eru er_key 'sessions-old uid)))
 
 (defsyntax key-session-stats
- ([session-id] (: eru er_key 'stats session-id)))
+ ([session-id] (: eru er_key 'session-stats session-id)))
 
 ;;;--------------------------------------------------------------------
 ;;; Session Creation
