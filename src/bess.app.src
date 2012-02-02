@@ -1,0 +1,12 @@
+{application, bess,
+ [
+  {description, "bess - basic erlang session system"},
+  {vsn, "0.3"},
+  {modules, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]
+}.
