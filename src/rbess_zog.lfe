@@ -11,6 +11,7 @@
   `(progn
     (zs-call logged_in ,redis-name (cxn))
     (zs-call session_uid ,redis-name (cxn))
+    (zs-call session_secret ,redis-name (cxn))
     (zs-call set_session ,redis-name (cxn uid))
     (zs-call remove_session ,redis-name (cxn)))))
 

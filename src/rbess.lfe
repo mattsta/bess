@@ -13,6 +13,7 @@
     (zs-call session-login-stats ,redis-name (session-id ip ua src ud ts))
     (zs-call logout ,redis-name (session-id logoutTS))
     (zs-call session-uid ,redis-name (session-id))
+    (zs-call session-secret ,redis-name (session-id))
     (zs-call session-stats-active-for-uid ,redis-name (uid))
     (zs-call session-stats-old-for-uid ,redis-name (uid))
     (zs-call session-stats ,redis-name (session-id)))))

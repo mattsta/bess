@@ -19,6 +19,9 @@
 (defun session_uid (redis cxn)
  (: bess session-uid redis (session-id cxn)))
 
+(defun session_secret (redis cxn)
+ (: bess session-secret redis (session-id cxn)))
+
 ; login and log session stats
 (defun set_session (redis cxn uid)
  (let ((session-id (gen-session-id))

@@ -29,11 +29,13 @@
         'ua ua
         'src src
         'uid uid
+        'secret (: mochihex to_hex (: crypto rand_bytes 16))
         'login loginTS)))
 
 (defun logout (redis session-id logoutTS)
  (let ((uid (session-uid redis session-id)))
   (: er hset redis (key-session-stats session-id) 'logout logoutTS)
+  (: er hdel redis (key-session-stats session-id) 'secret)
   (: er srem redis (key-uid-to-current-sessions uid) session-id)
   (: er sadd redis (key-uid-to-old-sessions uid) session-id)
   (: er del redis (key-session-to-uid session-id))))
@@ -43,6 +45,9 @@
 ;;;--------------------------------------------------------------------
 (defun session-uid (redis session-id)
  (: er get redis (key-session-to-uid session-id)))
+
+(defun session-secret (redis session-id)
+ (: er hget redis (key-session-stats session-id) 'secret))
 
 (defun session-stats-active-for-uid (redis uid)
  (lc ((<- s (: er smembers redis (key-uid-to-current-sessions uid))))
